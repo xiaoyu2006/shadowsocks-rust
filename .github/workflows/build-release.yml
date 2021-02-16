@@ -79,6 +79,7 @@ jobs:
       - name: Build release
         shell: bash
         run: |
+          sudo rm -Rf /Library/Developer/CommandLineTools/SDKs/*
           cd build
           ./build-release -t ${{ matrix.target }}
 
