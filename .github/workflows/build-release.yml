@@ -56,6 +56,9 @@ jobs:
       matrix:
         # os: [ubuntu-latest, macos-latest]
         os: [macos-latest]
+        target:
+          - aarch64-apple-darwin
+          - x86_64-apple-darwin
     steps:
       - uses: actions/checkout@v2
 
@@ -75,7 +78,7 @@ jobs:
         shell: bash
         run: |
           cd build
-          ./build-host-release
+          ./build-release -t ${{ matrix.target }}
 
       - name: Upload Github Assets
         uses: softprops/action-gh-release@v1
